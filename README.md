@@ -33,17 +33,63 @@ This project builds a robust predictive pipeline that:
 ```
 hospital-readmission/
 ├── src/
+│   ├── data_preparation.py     # Combines and cleans raw datasets
 │   ├── preprocessing.py        # Data cleaning, encoding, scaling
 │   ├── modeling.py             # Model training, tuning, evaluation
 │   ├── interpretability.py     # SHAP, feature importance, explainability
-│   ├── evaluation.py           # Confusion matrix, ROC, calibration plots
-│   └── utils.py                # Helper functions
+│   └── evaluation.py           # Confusion matrix, ROC, calibration plots
 │
-├── data/                       # Raw and processed datasets (excluded in .gitignore)
+├── data/
+│   ├── raw/                    # Original datasets
+│   │   ├── diabetic_data.csv   # 101,766 records, 50 columns
+│   │   └── admissions.csv      # 275 records, 16 columns
+│   └── processed/              # Cleaned datasets (ready for modeling)
+│       ├── diabetic_data_cleaned.csv      # 101,766 records, 22 columns
+│       ├── admissions_cleaned.csv         # 275 records, 11 columns
+│       └── DATA_PROCESSING_SUMMARY.md     # Detailed documentation
+│
 ├── reports/                    # Saved plots, metrics, feature importances
 ├── environment.yml             # Conda environment specification
-├── requirements.txt            # Optional pip-based dependency list
 └── README.md                   # Project documentation (this file)
+```
+
+---
+
+## 📊 Data Processing
+
+### Overview
+Two datasets have been combined and cleaned:
+
+| Dataset | Original | Cleaned | Records |
+|---------|----------|---------|---------|
+| **Diabetic Data** | 50 columns | 22 columns | 101,766 |
+| **Admissions Data** | 16 columns | 11 columns | 275 |
+
+### Key Features Retained
+
+**Target Variables:**
+- `readmitted` - Hospital readmission status (NO / <30 / >30 days)
+- `time_in_hospital` / `length_of_stay_days` - Length of stay
+
+**Predictor Variables:**
+- **Demographics**: race, gender, age, marital_status, language
+- **Healthcare Utilization**: number_outpatient, number_emergency, number_inpatient
+- **Clinical Indicators**: num_lab_procedures, num_procedures, num_medications, number_diagnoses
+- **Admission Details**: admission_type, admission_source, discharge_location
+- **Lab Results**: max_glu_serum, A1Cresult
+- **Medications**: insulin, diabetesMed, change
+- **Outcomes**: hospital_expire_flag
+
+### Columns Removed
+- **28 columns** from diabetic data (individual medication flags, weight, diagnosis codes)
+- **6 columns** from admissions data (provider IDs, timestamps, redundant fields)
+
+See `data/processed/DATA_PROCESSING_SUMMARY.md` for full details.
+
+### Running Data Preparation
+```bash
+cd src
+python data_preparation.py
 ```
 
 ---
