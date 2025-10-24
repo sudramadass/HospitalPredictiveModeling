@@ -1,11 +1,11 @@
-# 🏥 Hospital Readmission & Length-of-Stay Prediction
+# Hospital Readmission & Length-of-Stay Prediction
 
 This project develops and evaluates **machine learning models** to predict **hospital readmission** and **length of stay (LOS)**.  
 It also explores **why** models make certain predictions using explainability tools such as **SHAP**, **feature importance**, and **fairness analysis**.
 
 ---
 
-## 📘 Project Overview
+## Project Overview
 
 Hospitals face challenges in managing readmissions and understanding patient risk factors.  
 This project builds a robust predictive pipeline that:
@@ -28,7 +28,7 @@ This project builds a robust predictive pipeline that:
 
 ---
 
-## 🧱 Project Structure
+## Project Structure
 
 ```
 hospital-readmission/
@@ -55,7 +55,7 @@ hospital-readmission/
 
 ---
 
-## 📊 Data Processing
+## Data Processing
 
 ### Overview
 Two datasets have been combined and cleaned:
@@ -94,7 +94,7 @@ python data_preparation.py
 
 ---
 
-## ⚙️ Environment Setup
+## Environment Setup
 
 ### 1. Create and activate the environment
 ```bash
@@ -111,7 +111,7 @@ If you don’t have `conda`, install [Miniconda](https://docs.conda.io/en/latest
 
 ---
 
-## 📦 Dependencies
+## Dependencies
 
 Core packages included:
 - **pandas**, **numpy**, **scipy**, **scikit-learn**, **matplotlib**, **seaborn**
@@ -128,39 +128,39 @@ All are captured in `environment.yml` for reproducibility.
 
 ---
 
-## 🧮 Workflow
+## Workflow
 
-### **1️⃣ Data Preprocessing**
+### **Data Preprocessing**
 - Load data → handle missing values (`SimpleImputer`, `KNNImputer`)
 - Encode categorical variables (OneHot, Label)
 - Scale features (StandardScaler / MinMaxScaler)
 - Handle imbalance (SMOTE / class weights)
 - Split into train / validation / test
 
-### **2️⃣ Model Development**
+### **Model Development**
 - Train Logistic Regression, Random Forest, XGBoost, LightGBM, CatBoost
 - Use consistent evaluation metrics (Accuracy, F1, AUC)
 - Optimize hyperparameters (GridSearchCV or Optuna)
 - Save best model with `joblib`
 
-### **3️⃣ Evaluation**
+### **3Evaluation**
 - Plot confusion matrix, ROC, Precision-Recall, and calibration curves
 - Analyze false positives/negatives
 - Compare models across metrics
 
-### **4️⃣ Model Interpretability**
+### **4Model Interpretability**
 - Compute feature importances (tree-based, permutation)
 - Generate SHAP summary, beeswarm, and dependency plots
 - Local explanations for individual patients
 
-### **5️⃣ Fairness & Ethics**
+### **Fairness & Ethics**
 - Use `fairlearn` to assess bias across subgroups
 - Report disparate impact or performance gaps
 - Discuss ethical implications in healthcare ML
 
 ---
 
-## 📊 Example Results (Expected)
+## Example Results (Expected)
 
 | Model | Accuracy | F1 | AUC | Key Drivers |
 |--------|----------|----|-----|--------------|
@@ -172,7 +172,7 @@ All are captured in `environment.yml` for reproducibility.
 
 ---
 
-## 📈 Example Visuals
+## Example Visuals
 
 - SHAP Summary Plot → global feature importance  
 - Confusion Matrix → model performance overview  
@@ -182,7 +182,7 @@ _All saved under `/reports/`._
 
 ---
 
-## 🧪 Reproducibility
+## Reproducibility
 
 To exactly reproduce the working environment:
 ```bash
@@ -198,7 +198,7 @@ conda env export --no-builds > environment.yml
 
 ---
 
-## 🧑‍⚖️ Ethics Note
+## Ethics Note
 
 This project involves **healthcare prediction**, so:
 - Sensitive attributes (age, gender, race) should be handled responsibly.
@@ -206,7 +206,7 @@ This project involves **healthcare prediction**, so:
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Pull requests are welcome!  
 If you add new dependencies, please re-export the environment:
@@ -215,9 +215,4 @@ conda env export --no-builds > environment.yml
 ```
 
 ---
-
-## 🧾 License
-
-This project is released under the **MIT License**.  
-See `LICENSE` for details.
 
