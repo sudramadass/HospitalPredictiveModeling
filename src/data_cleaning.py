@@ -28,16 +28,7 @@ remove_cols = ['weight', 'payer_code', 'medical_specialty', 'diag_1', 'diag_2', 
 remove_cols = [col for col in remove_cols if col in df.columns]
 df = df.drop(columns=remove_cols)
 
-# 2.2: Remove individual medication columns (keep summary features instead)
-medication_cols = [
-    'metformin', 'repaglinide', 'nateglinide', 'chlorpropamide', 'glimepiride',
-    'acetohexamide', 'glipizide', 'glyburide', 'tolbutamide', 'pioglitazone',
-    'rosiglitazone', 'acarbose', 'miglitol', 'troglitazone', 'tolazamide',
-    'examide', 'citoglipton', 'glyburide-metformin', 'glipizide-metformin',
-    'glimepiride-pioglitazone', 'metformin-rosiglitazone', 'metformin-pioglitazone'
-]
-medication_cols = [col for col in medication_cols if col in df.columns]
-df = df.drop(columns=medication_cols)
+# 2.2: Keep all medication columns for chi-squared testing
 
 # 2.3: Handle missing values
 for col in df.columns:
