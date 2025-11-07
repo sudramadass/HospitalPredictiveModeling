@@ -1,0 +1,9 @@
+# Data and outputs
+*.csv
+data/
+outputs/
+*.joblib
+# Python env / caches
+.venv/
+__pycache__/
+*.pyc
